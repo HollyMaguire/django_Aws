@@ -14,3 +14,4 @@ class Job_code_managment(models.Model):
 
 class Machine_managment(models.Model):
     machine_code = models.CharField(max_length=200)
+    machine_rate = models.DecimalField(max_digits=10, decimal_places=2)
