@@ -15,3 +15,9 @@ class Job_code_managment(models.Model):
 class Machine_managment(models.Model):
     machine_code = models.CharField(max_length=200)
     machine_rate = models.DecimalField(max_digits=10, decimal_places=2)
+
+class Submit_Timecard(models.Model):
+    site_code = models.CharField(max_length=200)
+    contractor_name = models.CharField(max_length=200)
+    date = models.DateTimeField(auto_now_add=True)
+
