@@ -23,7 +23,6 @@ urlpatterns = [
     path('timesheet/', include('timesheet.urls')),
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
-    # path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(next_page='login'), name='logout'),
     path('signup/', views.signup, name='signup'),
     ]

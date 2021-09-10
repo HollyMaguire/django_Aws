@@ -7,7 +7,7 @@ from django.http import HttpResponse
 
 @login_required
 def home(request):
-    return render(request, 'home.html')
+    return render(request,'home.html')
 
 def signup(request):
     if request.method == 'POST':
