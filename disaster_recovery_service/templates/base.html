@@ -6,38 +6,84 @@
   <meta charset="utf-8">
   <title>{% block title %}Disaster Recover Application:Timecard Submission{% endblock %}</title>
 </head>
-<body>
   <header>
     <h1>Disaster Recover Application:Timecard Submission</h1>
-    {% if user.is_authenticated %}
+    <div style=float:right;>{% if user.is_authenticated %}
       Hi {{ user.username }}!
       <a href="{% url 'logout' %}">logout</a>
     {% else %}
       <a href="{% url 'login' %}">login</a>
     {% endif %}
+    </div>
   </header>
+<body>
+<style>
+body {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+}
+
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+
+.sidebar a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+</style>
+</head>
+
+
+
+
   <hr>
-  <main>
     {% block content %}
     {% endblock %}
   </main>
   <hr>
 </body>
-  <ul class="sidebar-nav">
 
-   {% if user.is_authenticated %}
-     <li>User: {{ user.get_username }}</li>
-   {% endif %}
-  </ul>
-{% load tags %}
 
-{% url 'home_url_name' as home %}
-{% url 'services_url_name' as services %}
-{% url 'contact_url_name' as contact %}
-
-<div id="navigation">
-    <a class="{% active request home %}" href="{{ home }}">Home</a>
-    <a class="{% active request services %}" href="{{ services }}">Services</a>
-    <a class="{% active request contact %}" href="{{ contact }}">Contact</a>
-</div>
 </html>
