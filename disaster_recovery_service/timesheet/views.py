@@ -10,11 +10,13 @@ from .forms import CreateTimeCardForm
 
 class ViewTimecard(ListView):
     model = Timecard
+    time_cards = Timecard.objects.all()
     template_name = 'timesheet/timecard.html'
 
 
 class TimecardTable(SingleTableView):
     model = Timecard
+    time_cards = Timecard.objects.all()
     table_class = TimecardTable
     template_name = 'timesheet/timecard.html'
 

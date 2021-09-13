@@ -5,6 +5,7 @@ body {
 }
 
 table {
+    class="table table-striped table-hover"
     width:100%;
     border-spacing:0;
     border-collapse: collapse;

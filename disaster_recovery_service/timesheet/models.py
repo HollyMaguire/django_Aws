@@ -7,12 +7,14 @@ class Timecard(models.Model):
     approved = models.BooleanField(default=False)
     date = models.DateTimeField(default=timezone.now)
 
+    @property
     def total_hours(self):
         total_hours = 0
         for i in Timecard_Job_code_managment.objects.filter(time_card_id=self.id):
             total_hours = total_hours + i.hours_worked
         return total_hours
 
+    @property
     def total_cost(self):
         total_cost = 0
         for i in Timecard_Job_code_managment.objects.filter(time_card_id=self.id):

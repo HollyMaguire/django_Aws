@@ -1,13 +1,12 @@
 from django import forms
 from django.forms import formset_factory
-
 from .models import Timecard, Job_code_managment, Timecard_Job_code_managment
 from django.utils import timezone
 
 class HoursWorkedForm(forms.Form):
     job_code_managment = forms.ModelMultipleChoiceField(
         queryset=Job_code_managment.objects.all(),
-        widget=forms.SelectMultiple,
+        widget=forms.Select,
         # widget=forms.CheckboxSelectMultiple,
     )
     hours_worked = forms.DecimalField(label="Hours worked", min_value=0, decimal_places=2)
@@ -15,14 +14,14 @@ class HoursWorkedForm(forms.Form):
 class CreateTimeCardForm(forms.ModelForm):
     job_code_managment = forms.ModelMultipleChoiceField(
         queryset=Job_code_managment.objects.all(),
-        widget=forms.SelectMultiple, # dont use select it wont work
+        widget=forms.Select, # dont use select it wont work
         # widget=forms.CheckboxSelectMultiple,
     )
     hours_worked = forms.DecimalField(label="Hours worked", min_value=0, decimal_places=2)
 
     job_code_managment_1 = forms.ModelMultipleChoiceField(
         queryset=Job_code_managment.objects.all(),
-        widget=forms.SelectMultiple,
+        widget=forms.Select,
         # widget=forms.CheckboxSelectMultiple,
     )
     hours_worked_1 = forms.DecimalField(label="Hours worked", min_value=0, decimal_places=2)

@@ -6,6 +6,7 @@
     {% csrf_token %}
     {{ form }}
     {{form.hours_worked.value}}
+
     <button type="submit" class="btn btn-success">Submit</button>
     <button type="button" value="Reset" id="resetBtn" onClick="this.form.reset()">Clear</button>
 
