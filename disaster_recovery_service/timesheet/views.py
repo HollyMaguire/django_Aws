@@ -1,9 +1,12 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
+
 from.models import Timecard, Job_code_managment, Machine_managment, Submit_Timecard
 from django.views.generic import ListView, CreateView
 from django.http import HttpResponse
 from .tables import TimecardTable, JobCodeTable, MachineTable
 from django_tables2 import SingleTableView
+from .forms import CreateTimeCardForm
 
 class ViewTimecard(ListView):
     model = Timecard
@@ -35,16 +38,19 @@ class MachineTable(SingleTableView):
     table_class = MachineTable
     template_name = 'timesheet/machines.html'
 
-
 class FillTimecard(CreateView):
-    model = Submit_Timecard
+    model = Timecard
+    form_class = CreateTimeCardForm
     template_name = 'timesheet/timesheetSubmit.html'
-    fields = ('site_code', 'contractor_name', 'date',)
+    success_url = reverse_lazy("index")
 
 
-    # labor_code = models.ForeignKey(Job_code_managment, on_delete=models.CASCADE)
-    # hours_worked = models.PositiveIntegerField()
-    # total_cost = models.DecimalField(max_digits=10, decimal_places=2)
-    # machine_code = models.ForeignKey(Machine_managment, on_delete=models.CASCADE)
-    # hours_used = models.PositiveIntegerField()
-    # total_cost_m = models.DecimalField(max_digits=10, decimal_places=2)
+# class LaborEntry(CreateView):
+#     model = Submit_Timecard
+#     template_name = 'timesheet/timesheetSubmit.html'
+#     fields = ('labor_code', 'hours_worked', 'total_cost',)
+
+# class FillTimecard(CreateView): #createTimecard
+#     model = Submit_Timecard
+#     template_name = 'timesheet/timesheetSubmit.html'
+#     fields = ('machine_code', 'hours_used', 'total_cost',)
