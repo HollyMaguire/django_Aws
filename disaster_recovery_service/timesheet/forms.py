@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import formset_factory
-from .models import Timecard, Job_code_managment, Timecard_Job_code_managment
+from .models import Timecard, Job_code_managment, Timecard_Job_code_managment, Machine_managment, Timecard_Machine_managment
 from django.utils import timezone
 
 class HoursWorkedForm(forms.Form):
@@ -19,8 +19,8 @@ class CreateTimeCardForm(forms.ModelForm):
     )
     hours_worked = forms.DecimalField(label="Hours worked", min_value=0, decimal_places=2)
 
-    job_code_managment_1 = forms.ModelMultipleChoiceField(
-        queryset=Job_code_managment.objects.all(),
+    machine_managment = forms.ModelMultipleChoiceField(
+        queryset=Machine_managment.objects.all(),
         widget=forms.Select,
         # widget=forms.CheckboxSelectMultiple,
     )
@@ -45,7 +45,7 @@ class CreateTimeCardForm(forms.ModelForm):
 
     class Meta:
         model = Timecard
-        fields = ['site_code', 'contractor_name', 'date','job_code_managment']
+        fields = ['site_code', 'contractor_name', 'date','job_code_managment', ]
         # fields = []
 
     def save(self, *args, **kwargs):

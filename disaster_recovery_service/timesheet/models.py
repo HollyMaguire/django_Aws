@@ -28,6 +28,7 @@ class Timecard(models.Model):
         return '{self.site_code}, {self.contractor_name}'.format(self=self)
 
 
+
 class Job_code_managment(models.Model):
     job_code = models.CharField(max_length=200)
     description = models.CharField(max_length=200)
@@ -43,6 +44,9 @@ class Machine_managment(models.Model):
     machine_rate = models.DecimalField(max_digits=10, decimal_places=2)
     details = models.CharField(max_length=200)
     time_card = models.ManyToManyField(Timecard, through="Timecard_Machine_managment")
+
+    def __str__(self):
+        return '{self.machine_code}'.format(self=self)
 
 class Timecard_Job_code_managment(models.Model):
     time_card = models.ForeignKey(Timecard, on_delete=models.CASCADE)

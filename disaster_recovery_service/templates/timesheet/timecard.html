@@ -4,31 +4,22 @@
 <html>
     <head>
         <title>Timesheet submissions</title>
-        <link rel="stylesheet" type="text/css" href="{% static 'disaster_recovery_service/static/css/tables.css' %}">
+        <link rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     </head>
-    <body>
-        {% render_table object_list %}
 
-        <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for time_card in time_cards %}
-    <tr class="table table-striped">
-      <td>{{ time_card.site_code }}</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-{% endfor %}
-  </tbody>
-</table>
+    <body>
+        <form>
+        <a class="btn" href="/timesheet/submitTimecard/" style=float:right; >Enter New Timesheet</a>
+
+    </form>
+    <div class="table">
+
+        {% render_table table %}
+        </p>
 
     </body>
+<style>
+table.solid {border-style: solid;}
+</style>
 </html>

@@ -8,20 +8,15 @@ from .tables import TimecardTable, JobCodeTable, MachineTable
 from django_tables2 import SingleTableView
 from .forms import CreateTimeCardForm
 
-class ViewTimecard(ListView):
+class ViewTimecard(SingleTableView):
     model = Timecard
-    time_cards = Timecard.objects.all()
-    template_name = 'timesheet/timecard.html'
-
-
-class TimecardTable(SingleTableView):
-    model = Timecard
-    time_cards = Timecard.objects.all()
     table_class = TimecardTable
     template_name = 'timesheet/timecard.html'
 
-class ViewJobCode(ListView):
+
+class ViewJobCode(SingleTableView):
     model = Job_code_managment
+    table_class = JobCodeTable
     template_name = 'timesheet/JobCodeManagement.html'
 
 
@@ -32,6 +27,7 @@ class JobCodeTable(SingleTableView):
 
 class ViewMachines(ListView):
     model = Machine_managment
+    table_class = MachineTable
     template_name = 'timesheet/machines.html'
 
 
