@@ -45,7 +45,7 @@ class CreateTimeCardForm(forms.ModelForm):
 
     class Meta:
         model = Timecard
-        fields = ['site_code', 'contractor_name', 'date','job_code_managment', ]
+        fields = ['site_code', 'contractor_name', 'date','job_code_managment', 'hours_worked', ]
         # fields = []
 
     def save(self, *args, **kwargs):

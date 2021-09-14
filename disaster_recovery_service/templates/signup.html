@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-  <h2>Sign up</h2>
+
+<h2>Sign up</h2>
   <form method="post">
     {% csrf_token %}
     {% for field in form %}
+     <div class="content">
       <p>
         {{ field.label_tag }}<br>
         {{ field }}
@@ -15,7 +17,9 @@
           <p style="color: red">{{ error }}</p>
         {% endfor %}
       </p>
+         </div>
     {% endfor %}
     <button type="submit">Sign up</button>
   </form>
+</div>
 {% endblock %}

@@ -5,6 +5,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <form method="post">
     {% csrf_token %}
+    <div class="content">
     <div class="form-group">
         Site Code {{ form.site_code }}
         Contractor Name{{ form.contractor_name }}
@@ -14,15 +15,15 @@
         <p class="solid"><b>Labor Entry</b> <br>
         <br>
         Labor Code {{ form.job_code_managment }}
-        Hours Worked_____
+        Hours Worked{{  form.hours_worked  }}
         Total _______ <br>
         <br>
         Labor Code {{ form.job_code_managment }}
-        Hours Worked_____
+        Hours Worked{{  form.hours_worked  }}
         Total _______<br>
        <br>
         Labor Code {{ form.job_code_managment }}
-        Hours Worked_____
+        Hours Worked{{  form.hours_worked  }}
         Total _______<br>
             <br>
             <a class="btn" href="/timesheet/submitTimecard/" style=float:right; >Add More</a>
@@ -34,27 +35,28 @@
             <p class="solid"><b>Machine Entry</b> <br>
             <br>
         Machine Code {{ form.machine_managment }}
-        Hours Used ______
+        Hours Used {{  form.hours_worked  }}
         Total ______ <br>
         <br>
         Machine Code {{ form.machine_managment }}
-        Hours Used ______
+        Hours Used {{  form.hours_worked  }}
         Total _______<br>
        <br>
         Machine Code {{ form.machine_managment }}
-        Hours Used ______
+        Hours Used {{  form.hours_worked  }}
         Total _______<br>
             <br>
             <a class="btn" href="/timesheet/submitTimecard/" style=float:right; >Add More</a>
             <br>
 
         </p>
-
+    </div>
     <button type="submit" class="btn btn-success" style=float:right;>Submit</button>
     <button type="button" value="Reset" id="resetBtn" onClick="this.form.reset()" style=float:right;>Clear</button>
 
   </form>
 <style>
 p.solid {border-style: solid;}
+
 </style>
 {% endblock %}

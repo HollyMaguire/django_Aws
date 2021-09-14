@@ -3,6 +3,7 @@
 <html>
 {% load static %}
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="utf-8">
   <title>{% block title %}Disaster Recover Application:Timecard Submission{% endblock %}</title>
 </head>
@@ -74,16 +75,17 @@ div.content {
 }
 </style>
 </head>
-
-
-
-
+<div class="sidebar">
+  <a class="active" href="http://localhost:8000/timesheet/">view timesheets</a>
+  <a href="http://localhost:8000/timesheet/jobCodes/">Job Code Managment</a>
+  <a href="http://localhost:8000/timesheet/machines/">Machine Managment </a>
+  <a href="http://localhost:8000/signup/">User Managment</a>
+</div>
   <hr>
     {% block content %}
     {% endblock %}
   </main>
   <hr>
 </body>
-
 
 </html>

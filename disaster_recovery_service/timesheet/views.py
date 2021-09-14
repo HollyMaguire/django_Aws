@@ -1,18 +1,27 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-
 from.models import Timecard, Job_code_managment, Machine_managment, Submit_Timecard
 from django.views.generic import ListView, CreateView
 from django.http import HttpResponse
-from .tables import TimecardTable, JobCodeTable, MachineTable
+from .tables import TimecardTable, JobCodeTable, MachineTable, TimecardTableAdmin
 from django_tables2 import SingleTableView
 from .forms import CreateTimeCardForm
 
+
+
+def approve(request, timesheet_id):
+    Timecard.objects.filter(id=timesheet_id).update(approved=True)
+    return redirect('/timesheet')
+
 class ViewTimecard(SingleTableView):
     model = Timecard
-    table_class = TimecardTable
+    table_class = TimecardTableAdmin
     template_name = 'timesheet/timecard.html'
 
+
+def delete_jobcode(request, jobcode_id):
+    Job_code_managment.objects.filter(id=jobcode_id).delete()
+    return redirect('jobCodes/')
 
 class ViewJobCode(SingleTableView):
     model = Job_code_managment
